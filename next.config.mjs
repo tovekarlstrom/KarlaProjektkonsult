@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'standalone',
   images: {
-    domains: ["images.ctfassets.net"],
+    domains: ['images.ctfassets.net'],
   },
   compiler: {
     styledComponents: true,
