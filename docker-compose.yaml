@@ -1,6 +1,7 @@
 version: '3.5'
 services:
   nextjs-app:
+    image: karlakonsult-image
     build:
       context: .
       dockerfile: Dockerfile
@@ -10,7 +11,7 @@ services:
       - PORT=3000
       - TZ=Europe/Stockholm
     volumes:
-      - /home/tove/karlakonsult:/app
+    - /home/tove/karlakonsult:/app
     ports:
       - 32789:3000
     restart: unless-stopped
