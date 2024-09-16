@@ -1,18 +1,21 @@
-import { createClient } from "contentful";
-import Card from "../components/card/Card";
-import React from "react";
-import Image from "next/image";
-import styled from "styled-components";
-import ContactUs from "../components/contactUs/ContactUs";
-import Head from "next/head";
+import { createClient } from 'contentful';
+import Card from '../components/card/Card';
+import React from 'react';
+import Image from 'next/image';
+import styled from 'styled-components';
+import ContactUs from '../components/contactUs/ContactUs';
+import Head from 'next/head';
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const client = createClient({
     space: process.env.CONTENTFUL_SPACE_ID as string,
     accessToken: process.env.CONTENTFUL_ACCESS_TOKEN as string,
   });
 
-  const response = await client.getEntries({ content_type: "case" });
+  const response = await client.getEntries({
+    content_type: 'case',
+    order: ['sys.createdAt'],
+  });
 
   return {
     props: {
@@ -20,7 +23,7 @@ export async function getStaticProps() {
     },
   };
 }
-console.log("test", "hej");
+
 export default function index({ cases }: { cases: any[] }) {
   return (
     <div>
@@ -34,13 +37,13 @@ export default function index({ cases }: { cases: any[] }) {
       <BackgroundDiv>
         <div
           style={{
-            backgroundColor: "rgba(0,0,0,0.2)",
-            width: "100%",
-            height: "100%",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            paddingTop: "120px",
+            backgroundColor: 'rgba(0,0,0,0.2)',
+            width: '100%',
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            paddingTop: '120px',
           }}
         >
           <LogoContainer>
@@ -50,7 +53,7 @@ export default function index({ cases }: { cases: any[] }) {
               fill
               sizes="100%"
               priority
-              style={{ objectFit: "contain" }}
+              style={{ objectFit: 'contain' }}
             />
           </LogoContainer>
 
@@ -67,15 +70,15 @@ export default function index({ cases }: { cases: any[] }) {
       </BackgroundDiv>
       <div
         style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          paddingTop: "100px",
-          backgroundColor: "#121212",
-          paddingBottom: "50px",
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          paddingTop: '100px',
+          backgroundColor: '#121212',
+          paddingBottom: '50px',
         }}
       >
-        <h2 style={{ color: "white", padding: "30px" }}>Case Studies</h2>
+        <h2 style={{ color: 'white', padding: '30px' }}>Case Studies</h2>
         {cases.map((caseItem: any, index) => (
           <Card key={index} props={{ ...caseItem.fields, index }} />
         ))}
@@ -85,7 +88,7 @@ export default function index({ cases }: { cases: any[] }) {
 }
 
 const BackgroundDiv = styled.div`
-  background-image: url("/black.jpg");
+  background-image: url('/black.jpg');
   background-size: cover;
   background-position: center 20%;
   background-repeat: no-repeat;

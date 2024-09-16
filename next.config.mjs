@@ -2,7 +2,13 @@
 const nextConfig = {
   output: 'standalone',
   images: {
-    domains: ['images.ctfassets.net'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.ctfassets.net',
+        pathname: '/**',
+      },
+    ],
   },
   compiler: {
     styledComponents: true,
