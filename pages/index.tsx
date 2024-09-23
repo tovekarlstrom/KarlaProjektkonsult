@@ -34,40 +34,40 @@ export default function index({ cases }: { cases: any[] }) {
           content="Karla konsult driver ditt projekt från start till klart. Teoretisk spetskompetens och den praktiska bredden. Vi har projektledare och utveklare för både stora och små projekt."
         />
       </Head>
-      <BackgroundDiv>
-        <div
-          style={{
-            backgroundColor: 'rgba(0,0,0,0.2)',
-            width: '100%',
-            height: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            paddingTop: '120px',
-          }}
-        >
-          <LogoContainer>
-            <Image
-              src="/karla-logo.png"
-              alt="logo"
-              fill
-              sizes="100%"
-              priority
-              style={{ objectFit: 'contain' }}
-            />
-          </LogoContainer>
 
-          <IntroductionSection>
-            <h1>DIN PROJEKTKONSULT</h1>
-            <p>
-              Karla konsult driver ditt projekt från start till klart. Teoretisk
-              spetskompetens och den praktiska bredden. Vi har projektledare och
-              ingenjörer för både stora och små projekt.
-            </p>
-          </IntroductionSection>
-          <ContactUs />
-        </div>
-      </BackgroundDiv>
+      <Container>
+        <BackgroundDiv>
+          <Image
+            src="/black.jpg"
+            alt="black-building"
+            fill
+            priority
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            style={{ objectFit: 'cover' }}
+          />
+        </BackgroundDiv>
+
+        <LogoContainer>
+          <Image
+            src="/karla-logo.png"
+            alt="logo"
+            fill
+            sizes="(min-width: 768px) 306px, 138px"
+            style={{ objectFit: 'contain' }}
+          />
+        </LogoContainer>
+
+        <IntroductionSection>
+          <h1>DIN PROJEKTKONSULT</h1>
+          <p>
+            Karla konsult driver ditt projekt från start till klart. Teoretisk
+            spetskompetens och den praktiska bredden. Vi har projektledare och
+            ingenjörer för både stora och små projekt.
+          </p>
+        </IntroductionSection>
+        <ContactUs />
+      </Container>
+
       <div
         style={{
           display: 'flex',
@@ -86,33 +86,35 @@ export default function index({ cases }: { cases: any[] }) {
     </div>
   );
 }
-
-const BackgroundDiv = styled.div`
-  background-image: url('/black.jpg');
-  background-size: cover;
-  background-position: center 20%;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
+const Container = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  /* padding-top: 120px; */
-  height: 800px;
-  width: 100%;
+  padding-top: 120px;
+  height: 700px;
+  width: 100vw;
   @media (min-width: 768px) {
-    height: 932px;
-    background-attachment: fixed;
+    height: 832px;
   }
 `;
 
+const BackgroundDiv = styled.div`
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+`;
 const IntroductionSection = styled.section`
   color: white;
   text-align: center;
+  margin-bottom: 50px;
   h1 {
     font-weight: 600;
-    font-size: 32px;
-    padding-bottom: 110px;
+    font-size: 2rem;
+    padding-bottom: 50px;
   }
   p {
     font-size: 20px;
@@ -123,10 +125,10 @@ const IntroductionSection = styled.section`
 
 const LogoContainer = styled.div`
   position: relative;
-  width: 200px;
-  height: 200px;
+  width: 138px;
+  height: 195px;
   @media (min-width: 768px) {
-    width: 300px;
-    height: 300px;
+    width: 306px;
+    height: 432px;
   }
 `;
