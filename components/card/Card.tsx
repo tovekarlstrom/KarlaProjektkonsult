@@ -73,6 +73,7 @@ export default function Card({ props }: CardProps) {
         alt={props.caseImage.fields.description}
         width={imageSize.width}
         height={imageSize.height}
+        quality={100}
         sizes="100%"
         style={{ objectFit: 'cover', objectPosition: 'center' }}
       />

@@ -42,7 +42,8 @@ export default function index({ cases }: { cases: any[] }) {
             alt="black-building"
             fill
             priority
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            quality={100}
+            sizes="100%"
             style={{ objectFit: 'cover' }}
           />
         </BackgroundDiv>
